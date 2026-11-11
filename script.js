@@ -96,7 +96,7 @@ const ALBUMS={
   londres:[["lon-cabine","La cabine rouge"],["lon-oxford","Oxford Circus"],["lon-camden","Camden Lock"],["lon-towerbridge","Tower Bridge de nuit"],["lon-townhouse","London townhouse"],["lon-bigben-moi","Un souvenir devant Big Ben"],["lon-bigben-eye","Big Ben"],["lon-abbaye","Abbaye de Westminster"],["lon-victoria","Le mémorial Victoria"],["lon-telepherique","Une vue depuis le téléphérique",1],["lon-drapeau","Balade dans Londres",1],["lon-metro","Le métro londonien",1],["lon-piccadilly","Piccadilly Circus by night",1]],
   coree:[["kor-palais","Changdeokgung Palace"],["kor-seoul-nuit","Seoul by night"],["kor-boutique","Pause gourmande à Myeongdong"],["kor-gangnam","Gangnam"],["kor-starfield","La Starfield Library, à COEX"],["kor-musee","Musée national de Corée"],["kor-garde","Palais de Gyeongbokgung",1],["kor-hanok","Jeonju Hanok Maeul",1],["kor-haedong-mer","Le temple Haedong Yonggungsa face à la mer, à Busan"],["kor-haedong","Haedong Yonggungsa, à Busan",1],["kor-lanternes","Sous les lanternes du temple Haedong Yonggungsa, à Busan",1,1]]
 };
-const src=d=>d[2]?`voyages/${d[0]}.jpg`:`voyages/${d[0]}.webp`, vign=d=>d[2]?`voyages/${d[0]}-v.jpg`:`voyages/${d[0]}-v.webp`;
+const src=d=>d[2]?`${d[0]}.jpg`:`${d[0]}.webp`, vign=d=>d[2]?`${d[0]}-v.jpg`:`${d[0]}-v.webp`;
 const loupe=document.getElementById('loupe'),loupeMedia=document.getElementById('loupe-media'),loupeLeg=document.getElementById('loupe-leg');
 document.querySelectorAll('.album').forEach(al=>{
   const data=ALBUMS[al.dataset.album];let i=0;
@@ -106,7 +106,7 @@ document.querySelectorAll('.album').forEach(al=>{
   vig.innerHTML=data.map(d=>`<button aria-label="${d[1]}${d[2]?' (vidéo)':''}"><img src="${vign(d)}" alt="" loading="lazy">${d[2]?'<span>Vidéo</span>':''}</button>`).join('');
   function voir(k){i=(k+data.length)%data.length;const d=data[i];
     vid.pause();
-    if(d[2]){img.hidden=true;vid.hidden=false;vid.poster=src(d);vid.src=`voyages/${d[0]}.mp4`;vid.setAttribute('aria-label',d[1]);const pr=vid.play();if(pr)pr.catch(()=>{})}
+    if(d[2]){img.hidden=true;vid.hidden=false;vid.poster=src(d);vid.src=`${d[0]}.mp4`;vid.setAttribute('aria-label',d[1]);const pr=vid.play();if(pr)pr.catch(()=>{})}
     else{vid.hidden=true;vid.removeAttribute('src');vid.load();img.hidden=false;img.src=src(d);img.alt=d[1]}
     cap.textContent=d[3]?'':d[1];fond.style.backgroundImage=`url(${src(d)})`;
     cpt.textContent=`Souvenir ${i+1} sur ${data.length}`;leg.textContent=d[1];
@@ -115,7 +115,7 @@ document.querySelectorAll('.album').forEach(al=>{
   al.querySelector('.prec').onclick=()=>voir(i-1);al.querySelector('.suiv').onclick=()=>voir(i+1);
   vig.addEventListener('click',e=>{const b=e.target.closest('button');if(b)voir([...vig.children].indexOf(b))});
   al.querySelector('.grand').onclick=()=>{const d=data[i];vid.pause();
-    loupeMedia.innerHTML=d[2]?`<video src="voyages/${d[0]}.mp4" poster="${src(d)}" controls playsinline autoplay muted loop aria-label="${d[1]}"></video>`:`<img src="${src(d)}" alt="${d[1]}">`;
+    loupeMedia.innerHTML=d[2]?`<video src="${d[0]}.mp4" poster="${src(d)}" controls playsinline autoplay muted loop aria-label="${d[1]}"></video>`:`<img src="${src(d)}" alt="${d[1]}">`;
     loupeLeg.textContent=d[1];loupe.hidden=false;document.getElementById('loupe-fermer').focus()};
   let x0=null;const ec=al.querySelector('.ecran');
   ec.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
@@ -161,7 +161,7 @@ document.querySelectorAll('[data-copie]').forEach(b=>b.addEventListener('click',
 
 /* CV ATS : téléchargement direct */
 document.querySelectorAll('.cv-btn').forEach(b=>b.addEventListener('click',()=>{
-  const a=document.createElement('a');a.href='docs/CV_Jennyfer_Bassinet_ATS.pdf';a.download='CV_Jennyfer_Bassinet_ATS.pdf';
+  const a=document.createElement('a');a.href='CV_Jennyfer_Bassinet_ATS.pdf';a.download='CV_Jennyfer_Bassinet_ATS.pdf';
   document.body.appendChild(a);a.click();a.remove();}));
 
 
