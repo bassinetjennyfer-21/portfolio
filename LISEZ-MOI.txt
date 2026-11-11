@@ -1,0 +1,85 @@
+SITE CV — JENNYFER BASSINET
+===========================
+
+CONTENU DU DOSSIER
+  index.html   -> le contenu de la page (textes, sections, liens)
+  style.css    -> l'apparence (couleurs, typo, tailles, espacements)
+  script.js    -> les animations et interactions (loupe, filtres, albums, machine à écrire…)
+  images/      -> portrait, déco, pâtisseries
+  voyages/     -> photos et vidéos des albums Londres et Corée
+  logos/       -> logos du bandeau « Ils m'ont fait confiance »
+  docs/        -> CV_Jennyfer_Bassinet_ATS.pdf (le CV téléchargeable)
+
+Ne renomme pas les dossiers et garde-les à côté d'index.html :
+la page va chercher les fichiers à ces emplacements.
+
+1. VOIR LE SITE SUR TON ORDINATEUR
+  Double-clique sur index.html : il s'ouvre dans ton navigateur.
+
+2. MODIFIER UN TEXTE (Sublime Text)
+  - Fichier > Ouvrir le dossier… > choisis le dossier du site.
+  - Ouvre index.html.
+  - Ctrl+F (Cmd+F sur Mac) et tape quelques mots du texte à changer.
+  - Remplace le texte entre les balises, sans toucher à ce qui est entre < et >.
+      Exemple : <h3>Responsable relation client</h3>
+                     ^ tu modifies seulement cette partie
+  - Ctrl+S pour enregistrer, puis F5 dans le navigateur pour voir le résultat.
+
+  Textes gérés dans script.js (pas dans index.html) :
+  - « Vous recrutez pour… »      -> cherche  const BRIEF
+  - Détail des missions (panneau) -> cherche  const XP
+  - Compétences « En situation »  -> cherche  const COMP
+  - Légendes des albums           -> cherche  const ALBUMS
+  - Livres de la bibliothèque     -> cherche  const LIVRES
+  - Phrase machine à écrire       -> cherche  const morceaux
+  Garde bien les guillemets "…" et les virgules autour de chaque texte.
+
+3. CHANGER UNE COULEUR OU LA TYPO (style.css)
+  Tout en haut de style.css, dans :root { … } :
+    --papier   fond de la page        --encre      couleur du texte
+    --sauge    vert moyen             --sauge-fonce vert des titres en italique
+    --menthe   vert très clair        --foret      vert foncé des bandeaux
+  Change le code couleur (ex. #FAF0E6) : tout le site suit.
+
+4. REMPLACER UNE IMAGE OU LE CV
+  Mets ton nouveau fichier dans le bon dossier avec EXACTEMENT le même nom
+  (ex. images/cookies.webp, docs/CV_Jennyfer_Bassinet_ATS.pdf).
+  Si le nom change, mets-le aussi à jour dans index.html ou script.js.
+
+  Ajouter une photo à un album : copie-la dans voyages/ (ex. lon-soho.webp
+  + une petite version lon-soho-v.webp pour la vignette), puis dans script.js,
+  dans const ALBUMS, ajoute une ligne : ["lon-soho","Ma légende"],
+  Pour une vidéo : lon-soho.mp4 + lon-soho.jpg + lon-soho-v.jpg et
+  ["lon-soho","Ma légende",1],
+
+5. METTRE EN LIGNE (gratuit)
+  Option simple : app.netlify.com/drop -> glisse le dossier entier du site.
+  Tu obtiens une adresse publique. Pour une mise à jour, glisse à nouveau le dossier
+  (depuis ton compte Netlify : Deploys > glisser-déposer).
+  Autre option : ton hébergeur si tu as un nom de domaine.
+
+6. METTRE EN LIGNE SUR GITHUB PAGES (adresse du type pseudo.github.io/cv)
+  a. Crée un compte sur github.com. Ton pseudo apparaîtra dans l'adresse
+     (ex. jennyferbassinet -> https://jennyferbassinet.github.io/cv/).
+  b. En haut à droite : « + » > New repository.
+     Repository name : cv   |   coche « Public »   |   Create repository.
+  c. Sur la page du dépôt, clique sur le lien « uploading an existing file ».
+  d. Ouvre le dossier du site sur ton ordinateur, sélectionne TOUT ce qu'il contient
+     (index.html, style.css, script.js, images, voyages, logos, docs…)
+     et glisse-le dans la fenêtre GitHub. Ne glisse pas le .zip, ni le dossier
+     parent : index.html doit être à la racine du dépôt.
+     Attends que tous les fichiers soient chargés, puis « Commit changes ».
+  e. Onglet Settings > Pages (menu de gauche).
+     Source : Deploy from a branch   |   Branch : main  /(root)   |   Save.
+  f. Patiente 1 à 2 minutes et recharge la page : ton lien s'affiche en haut
+     (« Your site is live at… »).
+
+  Astuce : si tu nommes le dépôt  pseudo.github.io  (avec ton pseudo exact),
+  l'adresse devient directement https://pseudo.github.io/ sans le /cv.
+
+  Mise à jour : dans le dépôt, Add file > Upload files, glisse les fichiers
+  modifiés (même nom = remplacement), puis Commit changes. En ligne en 1-2 min.
+  Pense à vider le cache (Ctrl+F5) si tu ne vois pas le changement.
+
+ASTUCE : avant une grosse modification, copie le dossier (« site-sauvegarde »).
+En cas d'erreur, il suffit de revenir à la copie.
